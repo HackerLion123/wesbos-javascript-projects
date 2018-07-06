@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Flex-box gallery</title>
+</head>
+<body>
+	<div class="panels">
+		<div class="panel panel1">You</div>
+		<div class="panel panel2">Me</div>
+		<div class="panel panel3">Hello</div>
+		<div class="panel panel4">Hi</div>
+	</div>
+
+<style type="text/css">
+	body{
+		font-size: 25px;
+		color: white;
+	}	
+
+	.panels{
+		display: flex;
+		overflow: hidden;
+	}
+
+	.panel{
+		min-height: 800px;
+		justify-content: center;
+		text-align: center;
+		background-size: cover;
+	}
+
+
+	.panel1{ background-image: url(images/1.jpg); }
+
+	.panel2{ background-image: url(images/2.jpg); }
+
+	.panel3{ background-image: url(images/6.jpg); }
+
+	.panel4{ background-image: url(images/7.jpg); }
+
+</style>
+
+<script type="text/javascript">
+	
+</script>
+</body>
+</html>

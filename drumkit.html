@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Drumkit</title>
+	<link rel="stylesheet" type="text/css" href="drums.css">
+</head>
+<body>
+	<div class="keys">
+		<div data-key="65" class="key">
+			<kbd>A</kbd>
+			<span></span>
+		</div> 
+		<div data-key="83" class="key">
+			<kbd>S</kbd>
+			<span></span>
+		</div>
+		<div data-key="68" class="key">
+			<kbd>D</kbd>
+			<span></span>
+		</div>
+		<div data-key="70" class="key">
+			<kbd>F</kbd>
+			<span></span>
+		</div>
+		<div data-key="71" class="key">
+			<kbd>G</kbd>
+			<span></span>
+		</div>
+		<div data-key="72" class="key">
+			<kbd>H</kbd>
+			<span></span>
+		</div>
+		<div data-key="74" class="key">
+			<kbd>J</kbd>
+			<span></span>
+		</div>
+		<div data-key="75" class="key">
+			<kbd>K</kbd>
+			<span></span>
+		</div>
+		<div data-key="76" class="key">
+			<kbd>L</kbd>
+			<span></span>
+		</div>
+	</div>
+
+	<audio data-key="65" src="drum_sounds/1.wav"></audio>
+	<audio data-key="83" src="drum_sounds/2.wav"></audio>
+	<audio data-key="68" src="drum_sounds/3.wav"></audio>
+	<audio data-key="70" src="drum_sounds/4.wav"></audio>
+	<audio data-key="71" src="drum_sounds/5.wav"></audio>
+	<audio data-key="72" src="drum_sounds/6.wav"></audio>
+	<audio data-key="74" src="drum_sounds/7.wav"></audio>
+	<audio data-key="75" src="drum_sounds/8.wav"></audio>
+	<audio data-key="76" src="drum_sounds/9.wav"></audio>
+
+	<script type="text/javascript">
+		window.addEventListener('keydown',function(e) {
+			const audio = document.querySelector('audio[data-key="'+e.keyCode+'"]');
+
+			const key = document.querySelector('.key[data-key="'+e.keyCode+'"]');
+			if(!audio) return;                        // Stop the function if no audio is found
+			audio.currentTime = 0;                    // Rewind to the start
+			audio.play();
+			key.classList.add('playing');
+			// key.classList.remove('playing');      // We can also do these
+			// key.classList.toggle('playing');
+		});
+
+		function removeTranstion(e){
+			if(e.propertyName !== 'transform') return;
+			console.log(this);
+			this.classList.remove('playing');
+		}
+
+		const keys = document.querySelectorAll('.key');
+		console.log(keys)
+			keys.forEach(key => key.addEventListener("transitionend",removeTranstion));
+	</script>
+</body>
+
+
+</html>

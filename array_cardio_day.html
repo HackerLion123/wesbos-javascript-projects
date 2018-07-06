@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Get better at Arrays</title>
+</head>
+<body>
+	<script type="text/javascript">
+		inventors = [
+			{first:'Tesla',last:'Nicolaus',born:1700,passed:1752},
+			{first:'Steven',last:'Hawkings',born:1921,passed:2018},
+			{first:'Einstein',last:'Albert',born:1821,passed:1872},
+			{first:'Michale',last:'Faraday',born:1821,passed:1862},
+			{first:'Baggge',last:'Charles',born:1700,passed:1781},
+			{first:'Dickens',last:'Charles',born:1700,passed:1751},
+			{first:'Max',last:'Plank',born:1858,passed:1947}
+			//{first:'Max',last:'Plank',born:1858,passed:},
+			//{first:'Max',last:'Plank',born:1858,passed:}
+		]
+
+		names = ['Clark kent','Bruce wayne','Bharath sundar','Rahul Dravid','Virat Kholi','Narendra Modi','Manmohan singh','Tony Stark']
+
+		// Array.prototype.filter()
+		const filtered = inventors.filter(inventor => inventor.born >= 1700 &&inventor.born < 1800);  // return true if we need to keep it
+
+		console.table(filtered);
+
+		//	Array.prototype.map()
+		// Give a array of first name and last name
+
+		const mapped = inventors.map(inventor=>inventor.first+" "+inventor.last);
+
+		console.table(mapped);
+
+		//	Array.prototype.sort()
+		// Sort inventors by oldest to newest
+		const year_sorted = inventors.sort((aGuy,bGuy)=>
+				aGuy.born>bGuy.born ? 1 : -1 
+		);		
+		console.table(year_sorted);
+
+
+		//Array.prototype.reduce()
+ 		const totalyears = inventors.reduce((total,inventor)=>{
+ 			return total + (inventor.passed - inventor.year);
+ 		},0);
+ 		console.log(totalyears);
+
+		// Sort the inventors by years lived(age).
+		const age_sorted = inventors.sort((aGuy,bGuy)=>{
+			const aAge =  aGuy.passed - aGuy.born;
+			const bAge = bGuy.passed - bGuy.born;
+			return aAge>bAge ? 1 : -1;
+		});
+		console.table(age_sorted);
+
+		// Create a list of boulevards in paris that contain de
+		// Run it on wikipedia page
+
+
+
+		const data = ['car','car','truck','bike','van','van','van','truck','truck','bike','car']
+		// Wordcount using reduce
+		const count = inventors.reduce();
+
+	</script>
+</body>
+</html>
